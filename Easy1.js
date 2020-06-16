@@ -16,16 +16,16 @@ let oddNumbers = (int) => [...Array(int + 1).keys()]
 
 //Re-using the previous function.
 let oddNumbers = (int) => [...Array(int + 1).keys()]
-                           .filter(isOdd)
-                           .forEach(x => console.log(x));
+                         .filter(isOdd)
+                         .forEach(x => console.log(x));
 
 /*
 Log all even numbers from 1 to 99, inclusive, to the console. 
 Log all numbers on separate lines.
 */
 
-let oddNumbers = (int) => [...Array(int + 1).keys()]
-                           .filter(x => x % 2 !== 0)
+let evenNumbers = (int) => [...Array(int + 1).keys()]
+                           .filter(x => x % 2 === 0)
                            .forEach(x => console.log(x));
 
 /*
@@ -39,6 +39,6 @@ Use the readlineSync.prompt method to collect user input.
 */
 
 let readlineSync = require('readline-sync');
-let length = readlineSync.question("Please enter the length of the room.");
-let width = readlineSync.question("Please enter the width of the room.");
-console.log(`The are of the room is ${length*width}: ${(length*10.7639)*(width*10.7639)}`);
+let length = readlineSync.question("Please enter the length of the room. ");
+let width = readlineSync.question("Please enter the width of the room. ");
+console.log(`The are of the room is ${length*width}: ${((length*width)*10.7639)}`);
