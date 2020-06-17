@@ -10,7 +10,7 @@ Log all odd numbers from 1 to 99, inclusive, to the console.
 Log all numbers on separate lines.
 */
 
-let oddNumbers = (int) => [...Array(int + 1).keys()]
+let oddNumbers = (int) => [...Array(int + 1).keys()].slice(1)
                            .filter(x => x % 2 !== 0)
                            .forEach(x => console.log(x));
 
@@ -26,7 +26,7 @@ Log all even numbers from 1 to 99, inclusive, to the console.
 Log all numbers on separate lines.
 */
 
-let evenNumbers = (int) => [...Array(int + 1).keys()]
+let evenNumbers = (int) => [...Array(int + 1).keys()].slice(1)
                            .filter(x => x % 2 === 0)
                            .forEach(x => console.log(x));
 
@@ -71,4 +71,10 @@ let sumNumbers = (array) => array.reduce((acc,x)=> acc + x, 0);
 let multNumbers = (array) => array.reduce((acc,x)=> acc * x, 1);
 
 let userdecision = sumOrProd.toLowerCase() === 's' ? sumNumbers(arraynumbers) : multNumbers(arraynumbers);
-console.log(userdecision);
+
+/*
+Write a function that takes two strings as arguments, determines the longer of the two strings, and then returns the result of concatenating the shorter string, the longer string, and the shorter string once again. 
+You may assume that the strings are of different lengths.
+*/
+
+let shortLongShort = (a,b) =>  a.length < b.length ? a+b+a : b+a+b;
