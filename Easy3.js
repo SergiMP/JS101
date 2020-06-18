@@ -116,3 +116,38 @@ let findFibonacciIndexByLength = (num) =>{
     }
     return idx;
 }
+
+/*
+Write a function that takes a positive integer, n, as an argument, and logs a right triangle 
+whose sides each have n stars. The hypotenuse of the triangle (the diagonal side in the images below) should have one end at the lower-left of the triangle, and the other end at the upper-right.
+
+Examples:
+
+triangle(5);
+
+    *
+   **
+  ***
+ ****
+*****
+
+*/
+
+let triangle = (number)=>{
+    // There are n lines of n size.
+    // Create an array of size n
+    // Iterate through the array and replace content by idx
+    //  create a variable delimiter = 1
+    // if idx < arr.length - delimiter ? " " : "*"
+    // iterate and modify the value of delimiter at each iteration
+    let array = [...Array(number + 1).keys()];
+    let delimiter = 1;
+    while(delimiter !== array.length){
+        for(let i =0;i < array.length;i++){
+            i < array.length - delimiter ? array[i] = " " : array[i] = "*";
+        }
+        console.log(array.join(""));
+        delimiter += 1;
+    }
+
+}
