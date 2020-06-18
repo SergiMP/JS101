@@ -107,3 +107,68 @@ console.log(xor(false, true) === true);
 console.log(xor(1, 1) === false);
 console.log(xor(true, true) === false);
 */
+
+let xor =(a,b) =>{
+    let falsy = [false, 0 ,-0, 0n ,'', null , undefined , NaN];
+    return falsy.includes(a) && !(falsy.includes(b)) || falsy.includes(b) && !(falsy.includes(a));
+}
+
+/*
+Write a function that returns an Array that contains every other element of an Array that is passed in as an argument. The values in the returned list should be those values that are in the 1st, 3rd, 5th, and so on elements of the argument Array.
+
+Examples:
+
+console.log(oddities([2, 3, 4, 5, 6])); // logs [2, 4, 6]
+console.log(oddities([1, 2, 3, 4, 5, 6])); // logs [1, 3, 5]
+console.log(oddities(["abc", "def"])); // logs ['abc']
+console.log(oddities([123])); // logs [123]
+console.log(oddities([])); // logs []
+*/
+
+let oddities = (array) => array.map((elem,index) =>{if(index %2 ===0){return elem}}).filter(x => x !== undefined);
+
+/*
+You may not use any of the standard conversion methods available in JavaScript, such as String() and Number(). 
+Your function should do this the old-fashioned way and calculate the result by analyzing the characters in the string.
+
+Examples
+
+console.log(stringToInteger("4321") === 4321); // logs true
+console.log(stringToInteger("570") === 570); // logs true
+*/
+
+let stringToInteger = (string) =>{
+    let numbers = {"0":0,"1":1,"2":2,"3":3,"4":4,"5":5,"6":6,"7":7,"8":8,"9":9};
+    let divisor = 1;
+    let result = 0;
+    for(let i =0; i<string.length-1;i++){divisor *= 10}
+    string.split("").forEach(element => {
+        result += (numbers[element] * divisor)
+        divisor /= 10;
+    });
+    return result;
+}
+
+/*
+
+Convert a String to a Signed Number!
+
+In the previous exercise, you developed a function that converts simple numeric strings to integers. In this exercise, you're going to extend that function to work with signed numbers.
+
+Write a function that takes a string of digits, and returns the appropriate number as an integer. 
+The string may have a leading + or - sign; if the first character is a +, your function should return a positive number; if it is a -, your function should return a negative number. 
+If no sign is given, you should return a positive number.
+
+You may assume the string will always contain a valid number.
+
+You may not use any of the standard conversion methods available in JavaScript, such as parseInt() and Number(). 
+You may, however, use the stringToInteger() function from the previous lesson.
+
+Examples
+
+console.log(stringToSignedInteger("4321") === 4321); // logs true
+console.log(stringToSignedInteger("-570") === -570); // logs true
+console.log(stringToSignedInteger("+100") === 100); // logs true
+*/
+
+let stringToSignedInteger =(string) => string.includes("-") ? -(stringToInteger(string.split("").slice(1).join(""))) :stringToInteger(string);
