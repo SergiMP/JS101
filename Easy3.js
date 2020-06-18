@@ -151,3 +151,40 @@ let triangle = (number)=>{
     }
 
 }
+
+/*
+A double number is an even-length number whose left-side digits are exactly the same as 
+its right-side digits. For example, 44, 3333, 103103, and 7676 are all double numbers, 
+whereas 444, 334433, and 107 are not.
+
+Write a function that returns the number provided as an argument multiplied by two, 
+unless the argument is a double number; return double numbers as-is.
+
+Examples:
+
+twice(37);          // 74
+twice(44);          // 44
+twice(334433);      // 668866
+twice(444);         // 888
+twice(107);         // 214
+twice(103103);      // 103103
+twice(3333);        // 3333
+twice(7676);        // 7676
+
+*/
+
+// If the number is of odd length, we need to  multiply it
+// if the number is even we need to create two slices
+// the first, from 0 to arr.length , the second from arr.length + 1
+// we then need to check that every single digit from one, is on the other.
+
+let twice = (number) =>{
+    let digits = String(number).length;
+    if(digits % 2 !== 0){
+         return number * 2;
+        }else{
+            let first = String(number).split("").slice(0,digits/2).join("");
+            let second = String(number).split("").slice(digits/2).join("");
+            return first === second ? number : number * 2;
+        }
+}
