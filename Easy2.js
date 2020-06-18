@@ -172,3 +172,32 @@ console.log(stringToSignedInteger("+100") === 100); // logs true
 */
 
 let stringToSignedInteger =(string) => string.includes("-") ? -(stringToInteger(string.split("").slice(1).join(""))) :stringToInteger(string);
+
+/*
+In the previous two exercises, you developed functions that convert simple numeric strings to signed integers. In this exercise and the next, you're going to reverse those functions.
+
+Write a function that converts a non-negative integer value (e.g., 0, 1, 2, 3, and so on) to the string representation of that integer.
+
+You may not use any of the standard conversion functions available in JavaScript, such as String(), Number.prototype.toString, 
+or an expression such as '' + number. Your function should do this the old-fashioned way and construct the string by analyzing and manipulating the number.
+
+Examples:
+
+integerToString(4321);      // "4321"
+integerToString(0);         // "0"
+integerToString(5000);      // "5000"
+integerToString(1234567890);      // "1234567890"
+*/
+
+let integerToString = (number) =>{
+    let numbers = {0:"0",1:"1",2:"2",3:"3",4:"4",5:"5",6:"6",7:"7",8:"8",9:"9"};
+    let divisor = 1;
+    let result = [];
+    for(let i =0; i<string.length-1;i++){divisor *= 10}
+    while( number % 10 > 9){
+        let getNumber = number % divisor;
+        result.push(numbers[getNumber]);
+        
+    }
+
+}
