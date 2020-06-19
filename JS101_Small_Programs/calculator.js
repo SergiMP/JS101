@@ -15,7 +15,7 @@ const bannerize = (text) => {
   topLine = topLine.join("");
   let fillerLine = topLine.replace(/\*/g,"|").replace(/-/g," ");
   let textLine = `| ${text} |`;
-  return ` ${topLine}\n ${fillerLine}\n ${textLine}\n ${fillerLine}\n ${topLine}`;
+  return ` ${topLine}\n ${fillerLine}\n ${textLine.replace(/\n/g,'')}\n ${fillerLine}\n ${topLine}`;
 };
 
 const add = (x,y) => x + y;
@@ -31,29 +31,36 @@ let operations = {
   "1" : add, "2" : substract, "3" : multiply, "4" : divide
 };
 
+const greet = `Welcome to this calculator 
+               you will be asked to enter two numbers one at a time.`;
 
-console.log(bannerize(`Welcome to this calculator, 
-  you will be asked to enter two numbers one at a time.`));
+console.log(bannerize(greet.replace(/\s{2}/g,"")));
 
 let firstNum = Number(readSync.question(
-  `- Please enter your first number => `));
+  `- Please enter your first number => \n`));
 while (isNaN(firstNum)) {
   console.log("The number is not recognized, please try again.");
-  firstNum = Number(readSync.question("- Please enter your first number => "));
+  firstNum = Number(readSync.question("- Please enter your first number => \n"));
 }
 let secondNum = Number(readSync.question(
-  `- Please enter your second number => `));
+  `- Please enter your second number => \n`));
 while (isNaN(secondNum)) {
   console.log("The number is not recognized, please try again.");
   secondNum = Number(readSync.question(
-    `- Please enter your second number => `));
+    `- Please enter your second number => \n`));
 }
-
-console.log("- To select your operation you can type the following: \n");
-console.log("=> + - * / \n");
+console.log("- To select your operation you can type the following:");
+console.log(`\n
+              + to add\n
+             - to substract\n
+             * to multiply\n
+             / to divide\n`);
 console.log("=> add substract multiply divide \n");
-console.log(`Or also:\n\n 1 for add\n 2 for substract
-            \n 3 for multiply\n 4 for divide \n`);
+console.log(`Or also:\n
+             1 for add\n 
+             2 for substract\n
+             3 for multiply\n 
+             4 for divide \n`);
 
 let operator = readSync.question("- Please enter your operator ").toLowerCase();
 
