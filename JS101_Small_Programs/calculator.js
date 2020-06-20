@@ -3,6 +3,7 @@ Greet the user.
 Ask the first number.
 Ask the second number.
 Perform the requested operation.
+Output the result
 */
 const readSync = require("readline-sync");
 
