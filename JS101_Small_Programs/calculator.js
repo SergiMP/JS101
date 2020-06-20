@@ -6,7 +6,7 @@ Perform the requested operation.
 */
 const readSync = require("readline-sync");
 
-const bannerize = (text) => {
+const bannerizeInput = (text) => {
   let topLine = ["*"];
   for (let int = 0; int <= text.length + 1; int++ ) {
     topLine.push("-");
@@ -34,7 +34,7 @@ let operations = {
 const greet = `Welcome to this calculator 
                you will be asked to enter two numbers one at a time.`;
 
-console.log(bannerize(greet.replace(/\s{2}/g,"")));
+console.log(bannerizeInput(greet.replace(/\s{2}/g,"")));
 
 let firstNum = Number(readSync.question(
   `- Please enter your first number => \n`));
@@ -69,4 +69,4 @@ while (!(operator in operations)) {
   operator = readSync.question("- Please enter your operator ").toLowerCase();
 }
 
-console.log(bannerize(`The result is ${operations[operator](firstNum,secondNum)} `));
+console.log(bannerizeInput(`The result is ${operations[operator](firstNum,secondNum)} `));
