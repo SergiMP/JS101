@@ -1,5 +1,5 @@
 const readSync = require("readline-sync");
-const messages = require("./config.json");
+const messages = require("./languages.json");
 
 //Declare and set output format function.
 const bannerizeInput = (text) => {
