@@ -79,7 +79,7 @@ while (carryOn !== false) {
 
   }
   console.clear();
-  let quit = ['no','n'];
+  let quit = ['no','n','nope'];
   if (quit.includes(confirm.toLowerCase())) {
     console.log(bannerizeInput(langVersion.farewell));
     carryOn = false;
