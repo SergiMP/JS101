@@ -1,0 +1,30 @@
+{
+  "en": {
+    "greeting": "Welcome to this calculator you will be asked to enter two numbers one at a time.",
+    "askFirstNum": "- Please enter your first number (default is zero) =>  ",
+    "askSecondNum": "- Please enter your second number (default is zero) => ",
+    "numberNotRecon": "The number is not recognized, please try again.",
+    "possibleOperator": "- To select your operation you can type the following:\n+ to add\n- to substract\n* to multiply\n/ to divide\n- Or you can also type:\n add\n substract\n multiply\n divide \n- Or also:\n Press 1 to add\n Press 2 to substract\nPress 3 to multiply\n Press 4 for divide \n",
+    "askOperator": "- Please enter your operator ",
+    "operatorNotRecog": "That operator is not recognized,please try again.",
+    "printResult": "The results is ",
+    "anotherOperation": "Would you like to perform another calculation?.\nType Y to continue or N to end.\n`",
+    "wrongAnswer": "I am sorry I didn't understand, please try again.",
+    "farewell": "Thanks for using this calculator.`",
+    "divisionByZero": "Division by zero is not allowed, please learn math and try again...`"
+  },
+  "es": {
+    "greeting": "Bienvenido a la calculadora, necesitara introducir dos numeros, uno a la vez.",
+    "askFirstNum": "- Por favor introduzca el primer numero (el numero por defecto es cero) =>  ",
+    "askSecondNum": "- Por favor introduzca el segundo numero (el numero por defecto es cero) => ",
+    "numberNotRecon": "Numero no reconocido, por favor intentelo de nuevo.",
+    "possibleOperator": " -Para seleccionar su operador tiene las siguientes opciones:\n  + para sumar\n  - para restar\n  * para multiplicar\n  / para dividir\n - O puede escribir:\n  sumar\n  restar\n  multiplicar\n  dividir\n - O finalmente:\n  Pulse 1 para sumar\n  Pulse 2 para restar\n  Pulse 3 para multiplicar\n  Pulse 4 para dividir\n",
+    "askOperator": "- Por favor, seleccione su operador:  ",
+    "operatorNotRecog": "Operador no reconozido, por favor intentelo de nuevo.",
+    "printResult": "El resultado es ",
+    "anotherOperation": "Le gustaria realizar una nueva operacion?\nPulse Y para continuar or N para finalizar.\n`",
+    "wrongAnswer": "Lo siento, no entendi, por favor intentelo de nuevo.",
+    "farewell": "Gracias por usar esta calculadora.`",
+    "divisionByZero": "La division por cero no esta definida, por favor intentelo de nuevo...`"
+  }
+}
