@@ -25,7 +25,7 @@ let operations = {
   "add" : add, "substract" : substract,
   "multiply" : multiply, "divide" : divide,
   "sumar" : add, "restar" : substract,
-  "multipliclar" : multiply, "dividir" : divide,
+  "multiplicar" : multiply, "dividir" : divide,
   "1" : add, "2" : substract, "3" : multiply, "4" : divide
 };
 //Declare while loop conditions.
