@@ -22,7 +22,7 @@
     "askOperator": "- Por favor, seleccione su operador:  ",
     "operatorNotRecog": "Operador no reconozido, por favor intentelo de nuevo.",
     "printResult": "El resultado es ",
-    "anotherOperation": "Le gustaria realizar una nueva operacion?\nPulse Y para continuar or N para finalizar.\n`",
+    "anotherOperation": "Le gustaria realizar una nueva operacion?\nPulse Y para continuar or N para finalizar.\n",
     "wrongAnswer": "Lo siento, no entendi, por favor intentelo de nuevo.",
     "farewell": "Gracias por usar esta calculadora.`",
     "divisionByZero": "La division por cero no esta definida, por favor intentelo de nuevo...`"
