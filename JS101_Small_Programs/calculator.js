@@ -74,7 +74,7 @@ const retrieveChoice = (inputType,input) => {
       return Number(chooseAgain('askSecondNum',input));
     case "askOperator":
       console.log(langVersion.operatorNotRecog);
-      return Number(chooseAgain('askOperator',input));
+      return chooseAgain('askOperator',input);
     case "anotherOperation":
       console.log(langVersion.wrongAnswer);
       return chooseAgain('anotherOperation',input);
