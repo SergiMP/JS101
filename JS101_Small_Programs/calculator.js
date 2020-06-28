@@ -36,7 +36,14 @@ const acceptableAnswers = ['yes',"y","yas","no",'n','nope'];
 //Greet user
 console.log(bannerizeInput(`Greetings, welcome to our calculator`));
 console.log(bannerizeInput(` Please type "es" to switch to the Spanish version of this calculator or "en" for the english version`));
-let language = readSync.question("Language (default: en) ===>  ").toLowerCase();
+let language = readSync.question("Language ===>  ").toLowerCase();
+
+while (!['es','en'].includes(language)) {
+
+  console.log("- The language is not recognized, please try again.");
+  language = readSync.question("Language ===>  ").toLowerCase();
+}
+
 let langVersion = language === "es".trim() ? messages["es"] : messages["en"];
 
 console.log(bannerizeInput(langVersion.greeting.replace(/\s{2}/g,"")));
