@@ -13,7 +13,11 @@
     "farewell": "Thanks for using this calculator.",
     "divisionByZero": " Division by zero is not allowed, please try again...",
     "notValidPrincipal" : "Please enter only positive numbers.",
-    "principal" : "Please enter the principal amount."
+    "principal" : "Please enter the principal amount",
+    "interestRate" : "Please enter the interest rate as a percentage i.e 1%, a number i.e 1, or a decimal i.e 0.01",
+    "loanYears" : "Please enter the length in years (0 if less than a year)",
+    "loanMonths" : "Please enter the amount of months (0 if the length is represented by a whole number of years i.e 4 years)",
+    "bye": "Thanks for using the financial calculator."
   },
   "es": 
   {
@@ -30,6 +34,10 @@
     "farewell": "Gracias por usar esta calculadora.",
     "divisionByZero": " La division por cero no esta definida, por favor intentelo de nuevo...",
     "notValidPrincipal" : "Por favor introduzca unicamente numeros mayores de cero",
-    "principal" : "Por favor introduzca el importe del prestamo"
+    "principal" : "Por favor introduzca el importe del prestamo",
+    "interestRate" : "Por favor introduzca la tasa de interes, como porcentage i.e 1%, numero i.e 1, o decimal i.e 0.01",
+    "loanYears" : "Por favor introduzca el numero de años del prestamo (0 si es inferior a un año)",
+    "loanMonths" : "Por favor introduzca el numero de meses del prestamo (0 si la duracion corresponde a un numero exacto de años)",
+    "bye": "Gracias por usar la calculadora financiera."
   }
 }
