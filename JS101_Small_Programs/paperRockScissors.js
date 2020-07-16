@@ -46,9 +46,9 @@ const computerChoice = validKeys[Math.floor(Math.random()) * validKeys.length ];
 
 const  quitGame = ['no','n','nope','bye'];
 const keepGame = ['yes','y','yas'];
+
 const invalidReply = (input) => {
-  return !(quitGame.includes(input.trim().toLowerCase())) ||
-  !(keepGame.includes(input.trim().toLowerCase()));
+  return ![...quitGame,...keepGame].includes(input);
 };
 
 console.log(bannerizeInput("Welcome to this simple Paper Rock Scissors game!"));
@@ -73,7 +73,7 @@ while ( true ) {
 
   let playAgain = readSync.question(`=> Want to play another game? `);
 
-  while (!invalidReply(playAgain)) {
+  while (invalidReply(playAgain)) {
     playAgain = readSync.question(`=> Sorry I didn't understand...Want to play another game? `);
   }
 

@@ -59,8 +59,8 @@ let confirm;
 const quit = ['no','n','nope'];
 
 console.log(bannerizeInput('Greetings, welcome to the financial calculator.'));
-console.log(bannerizeInput(` Please type "es" to switch to the Spanish version of this calculator or "en" 
-for the english version`));
+console.log(bannerizeInput(`  Please type "es" to switch to the Spanish 
+version of this calculator or "en" for the english version.${" "}  `));
 
 let language = readSync.question("Language ===>  ").toLowerCase();
 
