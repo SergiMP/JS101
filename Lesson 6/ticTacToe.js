@@ -26,6 +26,10 @@ let availableMoves = Object.keys(p);
 
 let isValidMove = (move) => availableMoves.includes(move);
 
+let userSymbol = readsync.question(`=> Please make your choice... X or O?`).toLocaleLowerCase();
+
+while ( userSymbol !== "X")
+
 let displayMoves = () => `=> Please select one of the available moves: ${availableMoves.join(",")} `;
 
 let playerMove = readsync.question(`${displayMoves()}`);
@@ -34,6 +38,8 @@ while (!(isValidMove(playerMove))) {
     console.log(`Sorry, that is not a valid move`);
     playerMove = readsync.question(`${displayMoves()}`);
 }
+
+p[playerMove] = userSymbol;
 
 console.log(threeBythreeBoard());
 //console.log(displayMoves());                            
