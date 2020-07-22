@@ -32,11 +32,16 @@ let displayBoard = (board) => {
   console.log(board)
 }
 
-let availableMoves = Object.keys(p);
 
-let isValidMove = (move) => availableMoves.includes(move);
+let remainingMoves = Object.keys(p);
+
+let emptyBoard = () => remainingMoves.length === 0;
+
+let isValidMove = (move) => remainingMoves.includes(move);
 
 let userSymbol = readsync.question(`=> Please make your choice... X or O ? `);
+
+let displayMoves = () => `=> Please select one of the available moves: ${remainingMoves.join(",")} `;
 
 while ( !symbols.includes(userSymbol) ){
   console.log("Not a valid symbol...at least yet...");
@@ -45,33 +50,43 @@ while ( !symbols.includes(userSymbol) ){
 
 let computerSymbol = symbols.filter(x => x !== userSymbol);
 
-while (availableMoves.length !== 0) {
-let displayMoves = () => `=> Please select one of the available moves: ${availableMoves.join(",")} `;
+let playerchoice = () => {
 
-let playerMove = readsync.question(`${displayMoves()}`);
+  let playerMove = readsync.question(`${displayMoves()}`);
 
-while (!(isValidMove(playerMove))) {
-    console.log(`Sorry, that is not a valid move`);
-    playerMove = readsync.question(`${displayMoves()}`);
+  while (!(isValidMove(playerMove))) {
+      console.log(`Sorry, that is not a valid move`);
+      playerMove = readsync.question(`${displayMoves()}`);
+  }
+
+  return playerMove;
+
 }
 
-p[playerMove] = userSymbol;
-
-availableMoves = availableMoves.filter(x => x !== playerMove);
-
-let computerChoice = "";
-
-while (computerChoice === ""){
-  console.log(`Available moves for computer are ${availableMoves}`)
-   computerChoice =availableMoves[Math.floor(Math.random() * availableMoves.length)];
-   console.log(`Computer chose ${computerChoice}`);
+let computerChoice = () => {
+  return remainingMoves[Math.floor(Math.random() * availableMoves.length)];
 }
 
-p[computerChoice] = computerSymbol;
+let updateBoard = (move,symbol) => p[move] = symbol;
 
-availableMoves = availableMoves.filter(x => x !== computerChoice);
+let availableMoves = (move) => remainingMoves.filter(x => x !== move);
 
 
-console.log(displayBoard(threeBythreeBoard()));
+while (!emptyBoard()) {
+  let move = playerchoice();
+
+  updateBoard(move,userSymbol);
+
+  remainingMoves =  availableMoves(move);
+
+  let compMove = remainingMoves[Math.floor(Math.random() * availableMoves.length)];
+
+  updateBoard(compMove,computerSymbol);
+
+  remainingMoves =  availableMoves(compMove);
+
+  console.log(displayBoard(threeBythreeBoard()));
+
 }
+
                           
