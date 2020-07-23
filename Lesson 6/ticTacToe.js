@@ -48,7 +48,12 @@ let remainingMoves = Object.keys(boardValues);
 
 let emptyBoard = () => remainingMoves.length === 0;
 
-let displayMoves = () => `=> Please select one of the available moves: ${remainingMoves.join(",")} `;
+let joinOr = (arr, delimiter = ",", word = 'or') => {
+  let last = arr.slice().pop();
+  return `${arr.slice(0,-1).join(delimiter)} ${word} ${last}`;
+};
+
+let displayMoves = () => `=> Please select one of the available moves: ${joinOr(remainingMoves)} `;
 
 let isValidMove = (move) => remainingMoves.includes(move);
 
