@@ -2,18 +2,18 @@
 let readsync = require("readline-sync");
 
 /****Board related functions *****/
-let boardValues = { 1: "1", 2: "2", 3:"3",
-  4:"4", 5:"5", 6:"6", 7:"7", 8:"8", 9: "9"};
 
 
-let initializeBoard = () => {
+function initializeBoard() {
   let keys = Array.from(Array(10).keys()).slice(1);
   let board = {};
-  for (let idx = 1; idx < keys.length; idx++) {
-    boardValues[idx] = String(idx);
+  for (let idx = 1; idx <= keys.length; idx++) {
+    board[idx] = String(idx);
   }
   return board;
-};
+}
+
+let boardValues = initializeBoard();
 
 const symbols = ["X","O"];
 
@@ -137,7 +137,7 @@ while (true) {
     .toLowerCase();
 
   if (['yes','y','yas'].includes(playAgain)) {
-    initializeBoard();
+    boardValues = initializeBoard();
     remainingMoves = Object.keys(boardValues);
   } else {
     break;
