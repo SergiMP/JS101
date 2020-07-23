@@ -30,6 +30,7 @@ let displayBoard = (board) => {
   console.log(board)
 }
 
+
 let updateBoard = (move,symbol) => p[move] = symbol;
 let emptyBoard = () => remainingMoves.length === 0;
 
@@ -73,15 +74,27 @@ let computerChoice = () => {
 
 /**** Winning Functions ****/
 
+let winningCombinations = [[1,2,3],[4,5,6],[7,8,9],[1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
 
-
+let winner = (array,symbol) => {
+  return array.map(subarray => subarray.every(x => p[x] == symbol)).includes(true);
+}
 
 /******* Main Game Loop ********/
 
 while (!emptyBoard()) {
+
+  displayBoard(threeBythreeBoard());
+
   let move = playerchoice();
 
   updateBoard(move,userSymbol);
+
+  if(winner(winningCombinations,userSymbol)){
+    displayBoard(threeBythreeBoard())
+    console.log("Player Won");
+    break;
+  }
 
   remainingMoves =  availableMoves(move);
 
@@ -89,10 +102,21 @@ while (!emptyBoard()) {
 
   updateBoard(compMove,computerSymbol);
 
+  if(winner(winningCombinations,computerSymbol)){
+    displayBoard(threeBythreeBoard())
+    console.log("Computer Won");
+    break;
+  }
+
   remainingMoves =  availableMoves(compMove);
 
   console.log(displayBoard(threeBythreeBoard()));
 
 }
 
-                          
+setTimeout(()=> {
+  console.clear();
+  console.log("Thanks for playing this game.");
+  setTimeout(()=>console.clear(),1000);
+},1000);
+
