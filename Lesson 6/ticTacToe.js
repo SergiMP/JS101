@@ -11,8 +11,8 @@ let boardValues = { 1: "1", 2: "2", 3:"3",
 let initializeBoard = () => {
   let keys = Array.from(Array(10).keys()).slice(1);
   let board = {};
-  for (let idx = 1; idx < keys.length; idx++) {
-    boardValues[idx] = String(idx);
+  for (let idx = 1; idx <= keys.length; idx++) {
+    board[idx] = String(idx);
   }
   return board;
 };
@@ -61,6 +61,17 @@ let isValidMove = (move) => remainingMoves.includes(move);
 
 let availableMoves = (move) => remainingMoves.filter(x => x !== move);
 
+/**** Winning Functions ****/
+
+let winningCombinations = [[1,2,3],[4,5,6],[7,8,9],
+  [1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
+
+let winner = (array,symbol) => {
+  return array.map(subarray =>
+    subarray.every(x => boardValues[x] === symbol)).includes(true);
+};
+
+
 /**** Symbol and choice functions *****/
 
 let userSymbol = readsync.question(`=> Please make your choice... X or O ? `).trim().toUpperCase();
@@ -85,21 +96,28 @@ let playerchoice = () => {
 
 };
 
-let computerChoice = () => {
+// Basic algorithm
+
+// let computerChoice = () => {
+//   return remainingMoves[Math.floor(Math.random() * availableMoves.length)];
+// };
+
+// The computer analyzes the winning combinations,
+// and selects the first that is one move away
+// to win.
+
+let analyzeBoard = () => winningCombinations.map(subarray => subarray
+  .filter( x => boardValues[x] !== userSymbol));
+
+let computerDecision = (array) => {
+  let elem = array.filter(subarray => subarray.length === 1).pop();
+
+  if (elem !== undefined) {
+    return boardValues[elem];
+  }
   return remainingMoves[Math.floor(Math.random() * availableMoves.length)];
 };
 
-/**** Winning Functions ****/
-
-let winningCombinations = [[1,2,3],[4,5,6],[7,8,9],
-  [1,4,7],[2,5,8],[3,6,9],[1,5,9],[3,5,7]];
-
-let winner = (array,symbol) => {
-  return array.map(subarray =>
-    subarray.every(x => boardValues[x] === symbol)).includes(true);
-};
-
-/******* Main Game Loop ********/
 
 let playerScore = 0;
 let computerScore = 0;
@@ -108,6 +126,8 @@ function resetScores() {
   playerScore = 0;
   computerScore = 0;
 }
+
+/******* Main Game Loop ********/
 
 while (true) {
   while (!emptyBoard()) {
@@ -130,10 +150,9 @@ while (true) {
       break;
     }
 
-
     remainingMoves =  availableMoves(move);
 
-    let compMove = computerChoice();
+    let compMove = computerDecision(analyzeBoard());
 
     updateBoard(compMove,computerSymbol);
 
@@ -166,13 +185,20 @@ while (true) {
   },1000);
 
   let playAgain = readsync.question("Would you like to play again? ")
+    .trim()
     .toLowerCase();
 
-  if (['yes','y','yas'].includes(playAgain)) {
-    initializeBoard();
-    remainingMoves = Object.keys(boardValues);
-  } else {
-    break;
+  while (!(['yes','y','yas','no','n','nope'].includes(playAgain)) ) {
+    console.log("Sorry I didn't understand, please try again.");
+    playAgain = readsync.question("Would you like to play again? ")
+      .toLowerCase();
   }
 
+  if (['no','n','nope'].includes(playAgain))  break;
+
+
+  boardValues = initializeBoard();
+  remainingMoves = Object.keys(boardValues);
+
 }
+
