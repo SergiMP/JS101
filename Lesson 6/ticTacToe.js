@@ -1,6 +1,8 @@
 "use strict";
 let readsync = require("readline-sync");
 
+const MATCH_GAME = 5;
+
 /****Board related functions *****/
 let boardValues = { 1: "1", 2: "2", 3:"3",
   4:"4", 5:"5", 6:"6", 7:"7", 8:"8", 9: "9"};
@@ -98,6 +100,15 @@ let winner = (array,symbol) => {
 };
 
 /******* Main Game Loop ********/
+
+let playerScore = 0;
+let computerScore = 0;
+
+function resetScores() {
+  playerScore = 0;
+  computerScore = 0;
+}
+
 while (true) {
   while (!emptyBoard()) {
 
@@ -109,7 +120,13 @@ while (true) {
 
     if (winner(winningCombinations,userSymbol)) {
       displayBoard(threeBythreeBoard());
-      console.log("Player Won");
+      playerScore += 1;
+      if (playerScore === MATCH_GAME) {
+        console.log("Player won the competition");
+        resetScores();
+        break;
+      }
+      console.log("Player Won this round");
       break;
     }
 
@@ -122,6 +139,12 @@ while (true) {
 
     if (winner(winningCombinations,computerSymbol)) {
       displayBoard(threeBythreeBoard());
+      computerScore += 1;
+      if (computerScore === MATCH_GAME) {
+        console.log("The computer won the competition");
+        resetScores();
+        break;
+      }
       console.log("Computer Won");
       break;
     }
