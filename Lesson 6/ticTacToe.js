@@ -108,6 +108,7 @@ while (true) {
       break;
     }
 
+
     remainingMoves =  availableMoves(move);
 
     let compMove = computerChoice();
@@ -120,11 +121,14 @@ while (true) {
       break;
     }
 
-    remainingMoves =  availableMoves(compMove);
+    if (emptyBoard()) break;
+
+    remainingMoves = availableMoves(compMove);
 
     console.log(displayBoard(threeBythreeBoard()));
 
   }
+
   if (emptyBoard()) console.log("Draw Game...");
 
   setTimeout(() => {
