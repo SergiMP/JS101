@@ -106,16 +106,20 @@ let playerchoice = () => {
 // and selects the first that is one move away
 // to win.
 
-let analyzeBoard = () => winningCombinations.map(subarray => subarray
-  .filter( x => boardValues[x] !== userSymbol));
+let analyzeBoard = () => winningCombinations.map(subarray =>
+  subarray.filter( x => boardValues[x] !== userSymbol)
+    .filter( x => boardValues[x] !== computerSymbol))
+  .filter(x => x.some( _val => true))
+  .filter(x => x.length === 1);
 
 let computerDecision = (array) => {
-  let elem = array.filter(subarray => subarray.length === 1).pop();
-
-  if (elem !== undefined) {
+  let elem = array.flat().shift();
+  if (elem) {
     return boardValues[elem];
+  } else {
+    return boardValues[Math.floor(Math.random() * remainingMoves.length)];
   }
-  return remainingMoves[Math.floor(Math.random() * availableMoves.length)];
+
 };
 
 
@@ -153,6 +157,8 @@ while (true) {
     remainingMoves =  availableMoves(move);
 
     let compMove = computerDecision(analyzeBoard());
+    // let compMove = computerChoice();
+
 
     updateBoard(compMove,computerSymbol);
 
@@ -168,15 +174,16 @@ while (true) {
       break;
     }
 
-    if (emptyBoard()) break;
-
     remainingMoves = availableMoves(compMove);
-
     console.log(displayBoard(threeBythreeBoard()));
+
+    if (emptyBoard()) {
+      console.log("Draw Game");
+      break;
+    }
 
   }
 
-  if (emptyBoard()) console.log("Draw Game...");
 
   setTimeout(() => {
     console.clear();
